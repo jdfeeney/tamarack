@@ -2,6 +2,7 @@
 <html>
 <head>
     <style>
+        /* Add your styling here */
         #password-overlay {
             position: fixed;
             top: 0;
@@ -14,7 +15,7 @@
             justify-content: center;
             align-items: center;
         }
-
+        
         #password-container {
             background-color: white;
             border-radius: 8px;
@@ -76,25 +77,29 @@
 
     <script>
         function checkPassword() {
-            // Set your password here
             const correctPassword = "tamamap";
-            
             const inputPassword = document.getElementById("password-input").value;
             const errorMessage = document.getElementById("error-message");
-            
+
             if (inputPassword === correctPassword) {
-                // Store in sessionStorage so it persists until browser is closed
+                // Store the session info so it persists
                 sessionStorage.setItem("sitePasswordCorrect", "true");
+
+                // Hide the password overlay
                 document.getElementById("password-overlay").style.display = "none";
+
+                // Redirect to the actual homepage
+                window.location.href = "https://experience.arcgis.com/experience/ff3fa72b4a1443389f4afb34ac057894/page/Homepage"; // Replace with actual homepage URL
             } else {
                 errorMessage.style.display = "block";
             }
         }
-        
-        // Check if already authenticated
+
+        // Check if the user is already logged in (i.e., password was previously entered)
         window.onload = function() {
             if (sessionStorage.getItem("sitePasswordCorrect") === "true") {
-                document.getElementById("password-overlay").style.display = "none";
+                // Redirect to the homepage if logged in
+                window.location.href = "https://your-username.github.io/your-actual-homepage.html"; // Replace with actual homepage URL
             }
         };
     </script>
